@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+# Opeções....
+editor="nano"
+
+dia_de_hoje=$( date +'%d/%m/%Y' )
+
+header=" #!/usr/bin/env bash
+#---------------------------
+# script    :
+# Descrição :
+# Versão    : 0.1
+# Autor     : Marciano
+# Data      : $dia_de_hoje
+# Licença   : GNU/GPL v3.0
+# --------------------------
+# Uso :
+# --------------------------
+"
+
+# testar se o usuário passou o número certo de  argumento
+[[ $# -ne 1 ]] && echo "Epa! eu preciso de *um* nome de arquivo" && exit 1
+
+# testa se o arquivo já exixte
+[[ -f $1 ]] && echo "Epa! arquivo já exite! Saindo!" && exit 1
+
+echo "$header" > $1
+
+chmod +x $1
+
+$editor $1
+
+exit 0
