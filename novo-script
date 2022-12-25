@@ -7,14 +7,14 @@ dia_de_hoje=$( date +'%d/%m/%Y' )
 
 header=" #!/usr/bin/env bash
 #---------------------------
-# script    :
-# Descrição :
+# script    : novo script
+# Descrição : cria um script
 # Versão    : 0.1
 # Autor     : Marciano
 # Data      : $dia_de_hoje
 # Licença   : GNU/GPL v3.0
 # --------------------------
-# Uso :
+# Uso : novo-script texto
 # --------------------------
 "
 
