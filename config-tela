@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+read -p "Digite o brilho de 1 a 9: " brilho
+
+[[ ! $brilho =~ ^[1-9]$ ]] && echo "Apenas número de 1 a 9" && exit 1
+
+xrandr --output VGA-1 --brightness 0.$brilho
+
+exit 0
