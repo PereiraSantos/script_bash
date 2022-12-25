@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+#---------------------------
+# script    : run-emulator
+# Descrição : iniciar emulador
+# Versão    : 0.1
+# Autor     : Marciano
+# Data      : 22/12/2022
+# Licença   : GNU/GPL v3.0
+# --------------------------
+# Uso       : programação flutter
+# --------------------------
+
+echo "[0] emulator 28"
+echo "[1] emulator 29"
+
+emuladores=("emulators_28" "emulators_29")
+
+read -p "Digite o emulador entre 0 e 1: " emulador
+
+[[ ! $emulador =~ ^[0-1]$ ]] && echo -e "\nTem que ser um múmero entre 0 e 1! Saindo...\n" && exit 1
+
+flutter emulators --launch ${emuladores[$emulador]} && exit 1
+
+exit 0
+
