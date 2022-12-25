@@ -1,4 +1,14 @@
 #!/usr/bin/env bash
+#---------------------------
+# script    : config-tela
+# Descrição : configura brilho tela
+# Versão    : 0.1
+# Autor     : Marciano
+# Data      : 25/12/2022
+# Licença   : GNU/GPL v3.0
+# --------------------------
+# Uso       : config-tela, digitar o valor
+# --------------------------
 
 read -p "Digite o brilho de 1 a 9: " brilho
 
