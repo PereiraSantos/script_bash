@@ -14,7 +14,7 @@ header=" #!/usr/bin/env bash
 # Data      : $dia_de_hoje
 # Licença   : GNU/GPL v3.0
 # --------------------------
-# Uso : novo-script texto
+# Uso       : novo-script texto
 # --------------------------
 "
 
