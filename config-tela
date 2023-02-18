@@ -10,10 +10,10 @@
 # Uso       : config-tela, digitar o valor
 # --------------------------
 
-read -p "Digite o brilho de 1 a 9: " brilho
+brilho=$(zenity --text="Digite de 1 a 9" --entry)
 
-[[ ! $brilho =~ ^[1-9]$ ]] && echo "Apenas número de 1 a 9" && exit 1
+[[ ! $brilho =~ ^[0-9]+$ ]] && zenity --info --text="Apenas números." && exit 1
 
-xrandr --output VGA-1 --brightness 0.$brilho
+[[ $brilho -gt 9 || $brilho -le 1 ]] && zenity --info --text="Seu numero deve ser entre 1 e 9 " && exit 1
 
-exit 0
+xrandr --output HDMI-1 --brightness 0.$brilho
