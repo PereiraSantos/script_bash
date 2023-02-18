@@ -1,0 +1,68 @@
+
+#!/usr/bin/env bash
+#---------------------------
+# script    : to-do-list
+# Descrição : agenda de tarefa
+# Versão    : 0.1
+# Autor     : Marciano
+# Data      : 15/02/2023
+# Licença   : GNU/GPL v3.0
+# --------------------------
+# Uso	    : to-do-list
+# --------------------------
+
+menu(){
+	echo "O que deseja fazer"
+	echo "[c]: Continuar"
+	echo "[m]: Menu"
+	echo "[s]: Sair"
+
+	read -p "Opção: " option
+
+	if [ "$option" = "c" ]; then
+		buildTask
+	elif [ "$option" = "m" ]; then
+		clear
+		menu
+	elif [ "$option" = "s" ]; then
+		clear
+		exit 0
+	else 
+		echo "Opção Inválida"
+	fi
+}
+
+buildTask(){
+	if [ ! -e "my-to-do-list.txt" ]; then
+		echo "**** TO TO LIST **** "  >> my-to-do-list.txt
+	fi
+
+	read -p "Digite o tarefa: " task
+
+	tamanhoLinha=$(wc -l my-to-do-list.txt) 
+	tamanhoString=$(echo -n ${tamanhoLinha} | wc -c)
+	novaLinha=$(echo ${tamanhoLinha: :$tamanhoString - 17})
+
+	echo "$novaLinha $task" >> my-to-do-list.txt
+
+	echo "Ver tarefas inseridas"
+	echo "[s]: SIM"
+	echo "[n]: NÂO"
+
+	read -p "Opção: " op
+
+	if [ "$op" = "s" ]; then
+		clear
+		echo "***********************************************"
+		cat my-to-do-list.txt
+		echo "***********************************************"
+		menu
+	elif [ "$op" = "n" ];then
+		clear
+		menu
+	else 
+		echo "Opção Inválida"
+	fi
+}
+
+menu
