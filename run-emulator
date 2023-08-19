@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 #---------------------------
 # script    : run-emulator
 # Descrição : iniciar emulador
@@ -10,16 +11,26 @@
 # Uso       : programação flutter
 # --------------------------
 
-echo "[0] emulator 28"
-echo "[1] emulator 29"
 
-emuladores=("emulators_28" "emulators_29")
+device=$(/path/android/emulator/emulator -list-avds)
 
-read -p "Digite o emulador entre 0 e 1: " emulador
+declare -a devices=()
 
-[[ ! $emulador =~ ^[0-1]$ ]] && echo -e "\nTem que ser um múmero entre 0 e 1! Saindo...\n" && exit 1
+for i in $device
+do
+    devices+=($i)
+done
 
-flutter emulators --launch ${emuladores[$emulador]} && exit 1
+emulador=$(
+zenity --list \
+ 	 --title="Emuladores" \
+ 	--column="Emulador" \
+	"${devices[@]}" \
+)
 
-exit 0
+[[ $emulador == "" ]] && exit 0
+
+/path/flutter/bin/flutter emulators --launch $emulador && exit 1
+
+echo 0
 
